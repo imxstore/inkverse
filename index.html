@@ -2,8 +2,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MYINKVERSE | Home</title><style>
+<title>MyInkVerse – Quotes, Anime Lists, K-Drama Recommendations & Digital Creations</title>
+<meta name="description" content="Discover inspiring quotes, trending anime recommendations, K-drama lists, creative digital projects, and curated content from MyInkVerse.">
+<meta name="robots" content="index, follow"><meta property="og:type" content="website">
+<meta property="og:site_name" content="MyInkVerse">
+<meta property="og:title" content="MyInkVerse – Quotes, Anime Lists, K-Drama Recommendations & More">
+<meta property="og:description" content="Explore anime rankings, K-drama recommendations, quotes, digital creations, and curated content from MyInkVerse.">
+<meta property="og:url" content="https://myinkverse.in">
 
+
+<style>
 *{
     margin:0;
     padding:0;
@@ -17,22 +25,19 @@ body{
     align-items:center;
     padding:20px;
     font-family:Arial,sans-serif;
-
     background:
     linear-gradient(45deg,#ffffff,#86c3fc);
 }
+
 
 .card{
     width:100%;
     max-width:420px;
     height:700px;
-
     position:relative;
     overflow:hidden;
-
     border-radius:22px;
     border:8px solid rgba(255,255,255,.85);
-
     box-shadow:
     0 20px 60px rgba(0,0,0,.18);
 }
@@ -42,13 +47,16 @@ body{
     inset:0;
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:cover; 
+    filter:
+        brightness(.60)
+        contrast(1.05)
+        saturate(.95);
 }
 
 .overlay{
     position:absolute;
     inset:0;
-
     background:
     linear-gradient(
     180deg,
@@ -61,22 +69,28 @@ body{
 .content{
     position:relative;
     z-index:2;
-
     height:100%;
-
     display:flex;
     flex-direction:column;
     justify-content:flex-end;
-
     padding:30px;
 }
 
-h1{
+
+.title{
     color:white;
-    font-size:2.4rem;
-    font-weight:700;
-    margin-bottom:8px;
-    text-shadow:0 4px 15px rgba(0,0,0,.35);
+    opacity:.9;
+    color:rgba(255,255,255,.9);
+    text-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+
+
+.tagline{
+    margin-bottom:10px;
+    opacity:.7anime;
+    font-weight:500;
+    color:rgba(255,255,255,.9);
+    text-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 
 .links{
@@ -103,6 +117,7 @@ h1{
     transition:.25s;
 }
 
+
 .link:hover{
     transform:translateY(-2px);
 }
@@ -116,28 +131,14 @@ h1{
     color:white;
     margin-top:18px;
     font-size:.8rem;
-    opacity:.8;
+    opacity:0.8;
 }
-.quote{
-    font-family:
-    "Brush Script MT",
-    "Segoe Script",
-    "Lucida Handwriting",
-    cursive;
 
-    font-size:1.15rem;
-    color:white;
-    opacity:.9;
-
-    margin-bottom:20px;
-    text-shadow:0 2px 8px rgba(0,0,0,.3);
-}
   /* misc */
         .signature {
             font-family: 'Brush Script MT', cursive;
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             color: #ffffff;
-            opacity: 0.8;
         }
 </style>
 
@@ -149,39 +150,89 @@ h1{
 <div class="overlay"></div>
 
 <div class="content">
-<p class="quote">"Leave it better than you found it."</p>
+   <h1 class="title">MyInkVerse</h1>
+   <h4 class="tagline">where ideas find ink</h4>
+   
+   
+   
     <div class="links">
-
-        <a class="link" href="#">
-            <span>@imxstore</span>
-            <span class="icon">🎵</span>
+        <a class="link" href="calculator.html">
+            <span>MyInkVerse</span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M12 20h9"/>
+  <path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+</svg></span>
         </a>
 
-        <a class="link" href="#">
-            <span>@myinkverse</span>
-            <span class="icon">📷</span>
+        <a class="link" href="https://Instagram.com/7degreelove">
+            <span>7degreelove</span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="2" y="2" width="20" height="20" rx="5"/>
+  <circle cx="12" cy="12" r="4"/>
+  <circle cx="17.5" cy="6.5" r="1"/>
+</svg></span>
         </a>
 
-        <a class="link" href="#">
-            <span>@mady</span>
-            <span class="icon">✕</span>
+        <a class="link" href="mailto:contact@imxstore.in">
+            <span> Mail </span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="5" width="18" height="14" rx="2"/>
+  <path d="M3 7l9 6 9-6"/>
+</svg></span>
         </a>
 
         <a class="link" href="https://imxstore.in">
             <span>Store</span>
-            <span class="icon">🛍</span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+  <path d="M3 6h18"/>
+  <path d="M16 10a4 4 0 0 1-8 0"/>
+</svg></span>
         </a>
 
     </div>
 
     <div class="footer">
           <p>
-                <span class="signature" style="font-size:1.2rem;">❤ with love</span>
-                <span> Madan Sidar</span>
+                <span class="signature" style="font-size:1.2rem;">✒ made with ink</span>
+                <span>| Madan Sidar</span>
             </p>
     </div>
 
 </div>
 
-</div></body>
+</div>
+</body>
 </html>
