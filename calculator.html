@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>💕 Love Calculator | Heart Sync</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #ff9a9e 0%, #fecfef 35%, #ffe6f0 100%);
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Roboto', sans-serif;
+      padding: 20px 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* main card */
+    .calculator {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(3px);
+      border-radius: 68px 48px 72px 48px;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 215, 215, 0.5);
+      padding: 28px 22px 38px;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    /* header hearts */
+    .header {
+      margin-bottom: 20px;
+    }
+    .heart-icon {
+      font-size: 3rem;
+      animation: pulse 1.6s infinite ease;
+      display: inline-block;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #d43f6b, #ff8c5a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      margin-top: 4px;
+    }
+    .sub {
+      color: #b35f6e;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-top: 1px dashed #ffbec3;
+      display: inline-block;
+      padding-top: 6px;
+    }
+
+    /* input fields */
+    .input-group {
+      margin: 28px 0 20px;
+      text-align: left;
+    }
+    .field {
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      color: #9b3c4a;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      margin-left: 8px;
+    }
+    label i {
+      margin-right: 6px;
+    }
+    input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: 2px solid #ffc0cb;
+      border-radius: 60px;
+      background: #fffef7;
+      outline: none;
+      transition: 0.2s;
+      font-family: inherit;
+      color: #2d1e22;
+      font-weight: 500;
+    }
+    input:focus {
+      border-color: #ff6f91;
+      box-shadow: 0 0 0 3px rgba(255, 105, 135, 0.2);
+    }
+
+    /* button */
+    .calculate-btn {
+      background: linear-gradient(95deg, #ff5f7c, #ff8a6f);
+      border: none;
+      padding: 14px 24px;
+      width: 100%;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 18px rgba(211, 65, 85, 0.3);
+      margin: 12px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .calculate-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* result area */
+    .result-area {
+      background: #ffeef2;
+      border-radius: 48px;
+      padding: 18px 14px;
+      margin: 16px 0 12px;
+      transition: all 0.3s;
+    }
+    .percentage {
+      font-size: 4.2rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #c72c4e, #ff7a45);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+    .love-message {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 8px 0;
+      color: #a13e53;
+    }
+    .compliment {
+      font-size: 0.85rem;
+      color: #cd6f82;
+      margin-top: 8px;
+      border-top: 1px solid #ffd0d8;
+      padding-top: 12px;
+    }
+
+    /* heart progress bar */
+    .heart-progress {
+      margin: 12px 0 8px;
+      background: #fbc4cf;
+      border-radius: 50px;
+      height: 14px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .heart-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff4d6d, #ff8c69);
+      border-radius: 50px;
+      transition: width 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    /* random fact / fun footer */
+    .fun-fact {
+      font-size: 0.7rem;
+      background: #fff1f3;
+      padding: 8px 12px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 18px;
+      color: #bb6b7c;
+    }
+
+    /* animations */
+    @keyframes pulse {
+      0% { transform: scale(1); text-shadow: 0 0 0 pink; }
+      50% { transform: scale(1.08); text-shadow: 0 0 6px #ff99aa; }
+      100% { transform: scale(1); text-shadow: 0 0 0 pink; }
+    }
+
+    /* responsiveness */
+    @media (max-width: 460px) {
+      .calculator {
+        padding: 22px 18px 32px;
+      }
+      .percentage {
+        font-size: 3rem;
+      }
+      input {
+        padding: 12px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="calculator">
+  <div class="header">
+    <div class="heart-icon">💗💖💘</div>
+    <h1>Love Calculator</h1>
+    <div class="sub">✨ measure the chemistry ✨</div>
+  </div>
+
+  <div class="input-group">
+    <div class="field">
+      <label><i>💑</i> Your name</label>
+      <input type="text" id="yourName" placeholder="e.g., Emma, Liam, Sofia..." autocomplete="off">
+    </div>
+    <div class="field">
+      <label><i>💕</i> Crush / Partner's name</label>
+      <input type="text" id="crushName" placeholder="e.g., Noah, Olivia, Lucas..." autocomplete="off">
+    </div>
+  </div>
+
+  <button class="calculate-btn" id="calcBtn">💖 CALCULATE LOVE 💖</button>
+
+  <div class="result-area" id="resultArea" style="display: none;">
+    <div class="percentage" id="lovePercent">0%</div>
+    <div class="heart-progress">
+      <div class="heart-fill" id="heartFill"></div>
+    </div>
+    <div class="love-message" id="loveMessage">✨ destiny loading... ✨</div>
+    <div class="compliment" id="complimentMsg"></div>
+  </div>
+
+  <div class="fun-fact" id="funFact">
+    💡 enter two names & feel the magic!
+  </div>
+</div>
+
+<script>
+  (function() {
+    // DOM elements
+    const yourNameInput = document.getElementById('yourName');
+    const crushNameInput = document.getElementById('crushName');
+    const calcBtn = document.getElementById('calcBtn');
+    const resultArea = document.getElementById('resultArea');
+    const lovePercentSpan = document.getElementById('lovePercent');
+    const heartFillDiv = document.getElementById('heartFill');
+    const loveMessageSpan = document.getElementById('loveMessage');
+    const complimentSpan = document.getElementById('complimentMsg');
+    const funFactDiv = document.getElementById('funFact');
+
+    // helper: generate deterministic but "random-feeling" love score based on name characters + extra pseudo randomness
+    // but to make it fun and not boring, we combine char codes, length, vowel harmony, and a twist factor
+    function calculateLoveScore(name1, name2) {
+      if (!name1 || !name2) return 0;
+      
+      // clean inputs: trim, lowerCase, remove extra spaces
+      const clean1 = name1.trim().toLowerCase();
+      const clean2 = name2.trim().toLowerCase();
+      
+      if (clean1.length === 0 || clean2.length === 0) return 0;
+      
+      // 1. base from character codes sum
+      let sumCodes = 0;
+      for (let i = 0; i < clean1.length; i++) {
+        sumCodes += clean1.charCodeAt(i);
+      }
+      for (let i = 0; i < clean2.length; i++) {
+        sumCodes += clean2.charCodeAt(i);
+      }
+      
+      // 2. common letters weight (more romantic if shared letters)
+      const set1 = new Set(clean1.split(''));
+      const set2 = new Set(clean2.split(''));
+      let commonLetters = 0;
+      for (let ch of set1) {
+        if (set2.has(ch)) commonLetters++;
+      }
+      const totalUniqueLetters = set1.size + set2.size;
+      const commonRatio = totalUniqueLetters > 0 ? (commonLetters / totalUniqueLetters) : 0;
+      
+      // 3. length compatibility: diff penalty
+      const lengthDiff = Math.abs(clean1.length - clean2.length);
+      const lengthPenalty = Math.min(20, lengthDiff * 3); // max -20
+      
+      // 4. vowel matching (a e i o u) feels loving
+      const vowels = ['a', 'e', 'i', 'o', 'u'];
+      let vowelCount1 = 0, vowelCount2 = 0;
+      for (let ch of clean1) if (vowels.includes(ch)) vowelCount1++;
+      for (let ch of clean2) if (vowels.includes(ch)) vowelCount2++;
+      const vowelHarmony = Math.min(15, Math.abs(vowelCount1 - vowelCount2) * 1.5);
+      const vowelBonus = vowelHarmony <= 5 ? 12 : (vowelHarmony <= 10 ? 6 : 0);
+      
+      // 5. starting letters same? bonus cuteness
+      const startBonus = (clean1[0] === clean2[0]) ? 9 : 0;
+      
+      // 6. pseudo "cosmic" factor based on current milliseconds? but we use a deterministic but name-based pseudo
+      // use a seeded factor from both names combined length + char sums to give variation between 0-100
+      let seed = (sumCodes % 97) + (clean1.length * 7) + (clean2.length * 13);
+      let pseudoRandom = (seed * 73129) % 101;   // gives 0-100 fluctuation but deterministic per name pair
+      // but to avoid same score every time for same names? we want consistent result for same input (makes it fair/trustworthy)
+      // but also sometimes people like slight variability? We'll keep deterministic so it's not random per click; it's love "algorithm"
+      // gives same result for the same pair, that's more romantic and predictable. But we also add a dynamic "vibe" optional? let's keep pure deterministic.
+      
+      // base score from sumCodes (mapped 0-40) + common letters contribution (0-30) + length and vowels + startBonus + pseudoRandom factor (0-12)
+      let sumBased = (sumCodes % 41); // 0 to 40
+      let commonBased = Math.floor(commonRatio * 32); // 0-32
+      let lengthBased = Math.max(0, 25 - lengthPenalty); // max 25
+      let vowelScore = vowelBonus; // 0-12
+      
+      let rawScore = sumBased + commonBased + lengthBased + vowelScore + startBonus + (pseudoRandom % 13);
+      
+      // ensure score between 20 and 98 to keep realistic but cute extremes possible
+      if (rawScore < 18) rawScore = 18 + (seed % 15);
+      if (rawScore > 99) rawScore = 98;
+      
+      // additional magic: if both names contain same last letter, bump a bit
+      if (clean1.slice(-1) === clean2.slice(-1)) rawScore += 4;
+      if (clean1.includes(clean2.slice(0,2)) || clean2.includes(clean1.slice(0,2))) rawScore += 5;
+      
+      // clamp final
+      let finalScore = Math.min(99, Math.max(15, Math.floor(rawScore)));
+      
+      // if both names are identical, add a little "twin flame" boost (but not over 99)
+      if (clean1 === clean2 && clean1.length > 2) {
+        finalScore = Math.min(99, finalScore + 12);
+      }
+      
+      return finalScore;
+    }
+    
+    // get fun message & compliment based on percentage
+    function getLoveMessage(percent, nameA, nameB) {
+      if (percent >= 90) {
+        return {
+          main: `💞 DESTINED SOULMATES! ${percent}% Pure Magic 💞`,
+          compliment: `✨ "${nameA} & ${nameB}" — cosmic harmony! Your love writes poetry. ✨`
+        };
+      } else if (percent >= 75) {
+        return {
+          main: `💖 Amazing Chemistry! ${percent}% True Love Vibe 💖`,
+          compliment: `🌸 A beautiful bond! Keep nurturing this spark — it's something special. 🌸`
+        };
+      } else if (percent >= 60) {
+        return {
+          main: `💗 Great Connection! ${percent}% Romantic Potential 💗`,
+          compliment: `✨ You two share genuine affection. With care, it can bloom into something wonderful! ✨`
+        };
+      } else if (percent >= 45) {
+        return {
+          main: `💓 Good Vibes! ${percent}% — A Sweet Match 💓`,
+          compliment: `🍃 A lovely friendship with romantic hints. Laugh together, grow together! 🍃`
+        };
+      } else if (percent >= 25) {
+        return {
+          main: `🌱 Sparks are Flying! ${percent}% — Interesting Bond 🌱`,
+          compliment: `💫 Not bad at all! Sometimes the best love stories start slowly. Give it time! 💫`
+        };
+      } else {
+        return {
+          main: `🌙 Cosmic Curiosity ${percent}% — Mysterious Connection 🌙`,
+          compliment: `⭐ Every relationship is unique. Focus on understanding each other — love transcends numbers. ⭐`
+        };
+      }
+    }
+    
+    // dynamic fun fact random (no external, just local flavor)
+    const funFactsList = [
+      "💘 Did you know? People who laugh together have +43% relationship satisfaction.",
+      "💖 In a study, eye contact for 4 minutes can increase feelings of intimacy.",
+      "💕 Shared hobbies boost love compatibility by 37%!",
+      "🌟 Kindness is the #1 trait people look for in a partner.",
+      "💞 Writing love notes can reignite passion — even digitally!",
+      "💗 The heart emoji is used 2.5 billion times daily on social media.",
+      "✨ 'Opposites attract' is real, but shared values keep couples together.",
+      "🌸 Complimenting your partner daily strengthens emotional bond."
+    ];
+    
+    function updateFunFact(percent) {
+      let randomIndex = Math.floor(Math.random() * funFactsList.length);
+      let baseFact = funFactsList[randomIndex];
+      if (percent !== undefined && percent > 0) {
+        if (percent > 80) {
+          funFactDiv.innerHTML = `💖 ${baseFact}  •  Your score is pure magic! 💖`;
+        } else if (percent > 55) {
+          funFactDiv.innerHTML = `💕 ${baseFact}  •  Great energy between you! 💕`;
+        } else {
+          funFactDiv.innerHTML = `💗 ${baseFact}  •  Love is a journey, enjoy it. 💗`;
+        }
+      } else {
+        funFactDiv.innerHTML = `💡 ${baseFact}`;
+      }
+    }
+    
+    // main calculation with UI update
+    function computeLove() {
+      let name1 = yourNameInput.value.trim();
+      let name2 = crushNameInput.value.trim();
+      
+      // validation: need both names with at least 1 character
+      if (name1 === "" || name2 === "") {
+        // show gentle error on result area if needed
+        resultArea.style.display = "block";
+        lovePercentSpan.innerText = "?";
+        heartFillDiv.style.width = "0%";
+        loveMessageSpan.innerHTML = "💔 both names needed 💔";
+        complimentSpan.innerHTML = "✨ enter both names to reveal your cosmic bond ✨";
+        funFactDiv.innerHTML = "💌 Write something sweet & try again! 💌";
+        return;
+      }
+      
+      // optional: if name too short, still works but we normalize
+      const score = calculateLoveScore(name1, name2);
+      const finalPercent = score;
+      
+      // get dynamic messages
+      const { main, compliment } = getLoveMessage(finalPercent, name1, name2);
+      
+      // update UI
+      lovePercentSpan.innerText = `${finalPercent}%`;
+      heartFillDiv.style.width = `${finalPercent}%`;
+      loveMessageSpan.innerHTML = main;
+      complimentSpan.innerHTML = compliment;
+      
+      // show result area if hidden
+      if (resultArea.style.display === "none") {
+        resultArea.style.display = "block";
+      }
+      
+      // add a little celebration effect: update fun fact based on score
+      updateFunFact(finalPercent);
+      
+      // tiny extra visual: change heart fill color variation
+      if (finalPercent >= 70) {
+        heartFillDiv.style.background = "linear-gradient(90deg, #ff3860, #ff9666)";
+      } else {
+        heartFillDiv.style.background = "linear-gradient(90deg, #ff4d6d, #ff8c69)";
+      }
+      
+      // Also animate pulse on percentage for fun
+      lovePercentSpan.style.animation = 'none';
+      lovePercentSpan.offsetHeight; // reflow
+      lovePercentSpan.style.animation = 'pulse 0.4s ease';
+      setTimeout(() => {
+        lovePercentSpan.style.animation = '';
+      }, 500);
+    }
+    
+    // event listeners
+    calcBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      computeLove();
+    });
+    
+    // optional: hit enter on any input triggers calculation
+    const inputs = [yourNameInput, crushNameInput];
+    inputs.forEach(inp => {
+      inp.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          computeLove();
+        }
+      });
+    });
+    
+    // small demo: set default placeholder example? (no autofill to avoid suggestion, but we can show initial funny fact)
+    // but we display result area hidden initially, perfect.
+    // nice detail: if user click empty, we show fun fact hint.
+    
+    // add a tiny confetti effect? but only emoji burst simulated without external? (simple console free)
+    // not needed, but keep lightweight.
+    
+    // also init random funfact on load
+    (function initRandomFact() {
+      let randomIndex = Math.floor(Math.random() * funFactsList.length);
+      funFactDiv.innerHTML = `💡 ${funFactsList[randomIndex]}`;
+    })();
+    
+    // if both fields get filled with demo data? not needed, but we can include a small "try example" double click on header? not mandatory.
+    // extra for better UX: clear placeholder style on focus, but no external needed.
+    // prefill to show something? Not mandatory, but give an example? will not override user.
+    // For demonstration, maybe populate if empty after double click on heart-icon? but not needed, maintain clean.
+    
+    // small easter egg: double tap on the heart icon shows random couple.
+    const heartIconDiv = document.querySelector('.heart-icon');
+    if (heartIconDiv) {
+      heartIconDiv.addEventListener('dblclick', () => {
+        const demoPairs = [["Luna", "Kai"], ["Milo", "Zara"], ["Aria", "Eli"], ["Ruby", "Max"]];
+        const randomPair = demoPairs[Math.floor(Math.random() * demoPairs.length)];
+        yourNameInput.value = randomPair[0];
+        crushNameInput.value = randomPair[1];
+        computeLove();
+      });
+    }
+  })();
+</script>
+</body>
+</html>
