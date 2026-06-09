@@ -1,382 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>love letter · link in bio</title>
-    <style>
-        /* reset & base — mobile first, soft romantic palette */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MYINKVERSE | Home</title><style>
 
-        body {
-            background: #fef9f5;  /* warm antique paper */
-            font-family: 'Georgia', 'Times New Roman', Times, serif;
-            color: #4a3b3b;
-            line-height: 1.5;
-            padding: 0 1rem 0.5rem 1rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 220, 220, 0.15) 0%, transparent 25%),
-                radial-gradient(circle at 90% 70%, rgba(255, 210, 230, 0.1) 0%, transparent 30%);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* main envelope — like a letter sheet */
-        .letter-container {
-            max-width: 480px;   /* cozy mobile width, but readable on larger screens */
-            width: 100%;
-            margin: 1.2rem auto;
-            background: rgba(255, 252, 245, 0.7);
-            backdrop-filter: blur(2px);
-            border-radius: 32px 32px 24px 24px;
-            box-shadow: 
-                0 8px 20px rgba(140, 70, 70, 0.08),
-                0 0 0 1px rgba(255, 230, 230, 0.8) inset,
-                0 0 0 2px #fff9f0 inset;
-            padding: 1.8rem 1.5rem;
-            border: 1px solid #ffe8e0;
-        }
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    font-family:Arial,sans-serif;
 
-        /* love letter details: hand-drawn dividers, soft ink */
-        .divider-heart {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            margin: 1.8rem 0 1.2rem 0;
-            color: #dba9a9;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
+    background:
+    linear-gradient(45deg,#ffffff,#86c3fc);
+}
 
-        .divider-heart span {
-            font-size: 1.2rem;
-            opacity: 0.7;
-        }
+.card{
+    width:100%;
+    max-width:420px;
+    height:700px;
 
-        .divider-heart::before,
-        .divider-heart::after {
-            content: "~";
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: #ecc9c9;
-            letter-spacing: -2px;
-        }
+    position:relative;
+    overflow:hidden;
 
-        /* section titles – like diary entries */
-        .section-title {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            text-transform: lowercase;
-            letter-spacing: 1px;
-            color: #ac5f5f;
-            border-bottom: 1px dashed #f4cfcf;
-            padding-bottom: 0.25rem;
-            margin-bottom: 1.2rem;
-            display: inline-block;
-        }
+    border-radius:22px;
+    border:8px solid rgba(255,255,255,.85);
 
-        /* --- hero / main launch section (love letter style) --- */
-        .hero {
-            text-align: center;
-            margin-bottom: 1rem;
-            position: relative;
-        }
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.18);
+}
 
-        /* stamp / seal effect */
-        .hero-stamp {
-            position: absolute;
-            top: -10px;
-            right: 5px;
-            font-size: 2.2rem;
-            opacity: 0.25;
-            transform: rotate(15deg);
-            pointer-events: none;
-        }
+.card img.bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
-        .hero-title {
-            font-size: 2.4rem;
-            font-weight: 400;
-            color: #884c4c;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 0 #fff3ed;
-            font-family: 'Georgia', 'Brush Script MT', cursive;
-            word-break: break-word;
-        }
+.overlay{
+    position:absolute;
+    inset:0;
 
-        .hero-sub {
-            font-size: 1rem;
-            color: #a16b6b;
-            background: #fff2ec;
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            border: 1px solid #ffd9d0;
-            margin: 0.7rem 0 0.4rem 0;
-            font-style: italic;
-        }
+    background:
+    linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(0,0,0,.15) 60%,
+    rgba(0,0,0,.55) 100%
+    );
+}
 
-        .hero-quote {
-            margin-top: 1.4rem;
-            background: rgba(255, 245, 235, 0.6);
-            padding: 1rem 0.8rem;
-            border-radius: 30px 10px 30px 10px;
-            font-size: 1.05rem;
-            border-left: 3px solid #fbb9b0;
-            border-right: 3px solid #fbb9b0;
-            color: #4e3a3a;
-            box-shadow: 0 2px 6px #f0dbd4;
-        }
+.content{
+    position:relative;
+    z-index:2;
 
-        .hero-quote i {
-            color: #b27272;
-        }
+    height:100%;
 
-        /* project section – gallery of links (lovely cards) */
-        .project-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
 
-        .project-card {
-            background: #fffdf9;
-            border: 1px solid #ffe4dc;
-            border-radius: 24px;
-            padding: 1.2rem 1.2rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 8px #f3e1db;
-            transition: 0.15s ease;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-        }
+    padding:30px;
+}
 
-        .project-card:hover {
-            background: #fff8f2;
-            transform: translateY(-3px);
-            border-color: #fcc6bb;
-            box-shadow: 0 10px 16px #edd9d2;
-        }
+h1{
+    color:white;
+    font-size:2.4rem;
+    font-weight:700;
+    margin-bottom:8px;
+    text-shadow:0 4px 15px rgba(0,0,0,.35);
+}
 
-        .project-card:active {
-            transform: scale(0.98);
-        }
+.links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
 
-        .project-name {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: #9f5a5a;
-            letter-spacing: -0.2px;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
+.link{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    padding:15px 18px;
+    border-radius:12px;
+    background:
+    linear-gradient(
+    45deg,
+    rgba(255,131,61,.90),
+    rgba(255,169,82,.40)
+    );
+    backdrop-filter:blur(8px);
+    transition:.25s;
+}
 
-        .project-name span {
-            font-size: 1.8rem;
-        }
+.link:hover{
+    transform:translateY(-2px);
+}
 
-        .project-description {
-            font-size: 0.95rem;
-            color: #6f5353;
-            margin: 0.4rem 0 0.2rem 0;
-            font-style: italic;
-            padding-left: 0.4rem;
-            border-left: 2px dotted #f1b0a5;
-        }
+.icon{
+    font-size:18px;
+}
 
-        .project-tag {
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            color: #b98787;
-            text-transform: lowercase;
-            display: flex;
-            gap: 0.8rem;
-            border-top: 1px dashed #f3cfc7;
-            padding-top: 0.4rem;
-        }
+.footer{
+    text-align:center;
+    color:white;
+    margin-top:18px;
+    font-size:.8rem;
+    opacity:.8;
+}
+.quote{
+    font-family:
+    "Brush Script MT",
+    "Segoe Script",
+    "Lucida Handwriting",
+    cursive;
 
-        /* contact section – like postscript */
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin-top: 0.8rem;
-        }
+    font-size:1.15rem;
+    color:white;
+    opacity:.9;
 
-        .contact-item {
-            background: #fff7f0;
-            border-radius: 60px;
-            padding: 0.8rem 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.1rem;
-            border: 1px solid #ffded3;
-            box-shadow: 0 2px 4px #f0dbd4;
-            transition: all 0.1s ease;
-            color: #5c4040;
-            text-decoration: none;
-        }
-
-        .contact-item:hover {
-            background: #ffeade;
-            border-color: #f2ac9c;
-        }
-
-        .contact-emoji {
-            font-size: 1.7rem;
-            filter: drop-shadow(2px 2px 0 #fadad2);
-        }
-
-        /* copyright footer – delicate colophon */
-        .footer-love {
-            margin-top: 2rem;
-            padding: 1.4rem 0.5rem 0.3rem 0.5rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #b68b8b;
-            border-top: 1px dashed #f0c7bc;
-            width: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-love p {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.3rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-hearts {
-            font-size: 0.9rem;
-            color: #e3a5a5;
-            margin: 0.3rem 0 0.2rem;
-            letter-spacing: 2px;
-        }
-
-        .small-print {
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-
-        /* handwritten touches */
-        .wavy-line {
-            background: repeating-linear-gradient(45deg, #f2d7d1, #f2d7d1 4px, transparent 4px, transparent 8px);
-            height: 2px;
-            width: 80px;
-            margin: 0.8rem auto;
-        }
-
-        /* misc */
+    margin-bottom:20px;
+    text-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+  /* misc */
         .signature {
             font-family: 'Brush Script MT', cursive;
             font-size: 1.6rem;
-            color: #a25252;
+            color: #ffffff;
             opacity: 0.8;
         }
-    </style>
+</style>
+
 </head>
 <body>
-    <!-- the letter envelope -->
-    <div class="letter-container">
+    
+    <div class="card"><img src="photo.jpg" class="bg">
 
-        <!-- hero / main launch section (love letter style) -->
-        <section class="hero">
-            <div class="hero-stamp">💌</div>
-            <h1 class="hero-title">to you, <br>with love</h1>
-            <div class="hero-sub">a love letter to you</div>
-            <div class="hero-quote">
-                <i>“मैं किसी परफेक्ट कहानी की तलाश में नहीं हूँ।<br> 
-मुझे बस वो लड़की चाहिए जो मेरे साथ सच्ची हो,<br> 
-जो मेरी खामोशियों को भी समझ सके।<br>शायद किसी दिन अचानक तुम मिल जाओ,  
-और मैं बस मुस्कुरा कर कहूँ —  
-<b>मैं तुम्हारा इंतज़ार कर रहा था।</b>”</i>
-                <div style="margin-top: 0.3rem;">💕</div>
-            </div>
-            <!-- sealed with a kiss (hand drawn) -->
-             <div style="display: flex; justify-content: center; margin: 1rem 0 0.2rem;">
-                <span style="border: 1px solid #f3aca2; border-radius: 50%; padding: 0.2rem 0.5rem; font-size: 1rem; background: white;">❤</span></span>
-            </div>
-        </section>
+<div class="overlay"></div>
 
+<div class="content">
+<p class="quote">"Leave it better than you found it."</p>
+    <div class="links">
 
-        <!-- delicate heart divider -->
-        <div class="divider-heart">
-            <span>♡</span>My Little World<span>♡</span>
-        </div>
+        <a class="link" href="#">
+            <span>@imxstore</span>
+            <span class="icon">🎵</span>
+        </a>
 
+        <a class="link" href="#">
+            <span>@myinkverse</span>
+            <span class="icon">📷</span>
+        </a>
 
-       
+        <a class="link" href="#">
+            <span>@mady</span>
+            <span class="icon">✕</span>
+        </a>
 
-        <!-- another hand drawn separator -->
-        <div class="wavy-line"></div>
+        <a class="link" href="https://imxstore.in">
+            <span>Store</span>
+            <span class="icon">🛍</span>
+        </a>
 
-        <!-- contact section (like p.s.) -->
-    <section style="margin-bottom: 1rem;">
-            
-     <h2 class="section-title">send a letter back</h2>
-            <div class="contact-list">
-                <a href="#" class="contact-item" aria-label="email">
-                    <span class="contact-emoji">💌</span>  contact@imxstore.in
-                </a>
-                <a href="#" class="contact-item" aria-label="instagram">
-                    <span class="contact-emoji">📷</span>  @madan.ewx
-                </a>
-                <a href="#" class="contact-item" aria-label="instagram">
-                    <span class="contact-emoji">📷</span>  @7degreelove
-                </a>
-                <a href="#" class="contact-item" aria-label="instagram">
-                    <span class="contact-emoji">FB</span>  @madan.sidar.9
-                </a>
-               
-                  
-            </div>
-            
-     
-            
-            <!-- handwritten p.s. -->
-            <p style="margin-top: 1rem; font-size: 0.95rem; background: #ffede6; padding: 0.6rem; border-radius: 20px;">
-                <span style="font-weight: bold;">p.s.</span> — every link is a little piece of my heart. <br>tap one, i’ll be there.
+    </div>
+
+    <div class="footer">
+          <p>
+                <span class="signature" style="font-size:1.2rem;">❤ with love</span>
+                <span> Madan Sidar</span>
             </p>
-        </section>
+    </div>
 
-        <!-- copyright footer with love letter closing -->
-        <footer class="footer-love">
-            <div class="footer-hearts">
-                <span>ᵕ̈</span> <span>♡</span>  <span>ᵕ̈</span>
-            </div>
-            <p>
-                <span>© 2025 Madan Sidar</span>
-                <span class="signature" style="font-size:1.2rem;">with love</span>
-                <span>· all rights reserved ·</span>
-            </p>
-            <p class="small-print">
-                made with ink, kisses & a touch of nostalgia
-            </p>
-            <div style="margin-top: 0.6rem; font-size: 0.9rem;">
-                🕯️  💌  🕯️
-            </div>
-        </footer>
-    </div> <!-- end letter container -->
+</div>
 
-    <!-- tiny floating heart (extra love) -->
-    <div style="opacity:0.3; font-size: 1rem; margin-top: -0.2rem;">~ ❤ ~</div>
-</body>
+</div></body>
 </html>
