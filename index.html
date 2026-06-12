@@ -407,7 +407,7 @@ const inkverseLinks = [
     }, 
     {
         title: "Youtube Station",
-        href: "/music",
+        href: "https://youtube.com/@grootytales?si=JLIkmyGLnTqEwAW5",
         icon: icons.story
     }
 ];
@@ -446,7 +446,7 @@ const emailLinks = [
 function showModal(title, items) {
     modalTitle.textContent = title;
     modalLinks.innerHTML = items.map(item => `
-        <a class="link" href="${item.href}" target="_blank">
+        <a class="link" href="${item.href}">
             <span>${item.title}</span>
             <span>${item.icon}</span>
         </a>
