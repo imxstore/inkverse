@@ -48,8 +48,8 @@ body{
     height:100%;
     object-fit:cover; 
     filter:
-        brightness(.60)
-        contrast(1.05)
+        brightness(.80)
+        contrast(.9)
         saturate(.95);
 }
 .overlay{
@@ -181,22 +181,43 @@ body{
     cursor:pointer;
     backdrop-filter:blur(10px);
 }
+
+.stat-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
 </style>
 
 </head>
 <body>
     
     <div class="card">
-    <img src="photo.jpg" class="bg">
+    <img src="ff.jpg" class="bg">
        <div class="overlay"></div>
        <div class="content">
-   <h1 class="title">𝙼𝚢𝙸𝚗𝚔𝚅𝚎𝚛𝚜𝚎</h1>
-   <h4 class="tagline">where ideas find ink</h4>
+   <h1 class="title">ᶜᴿᴬᶻᵞQUEEN✧</h1>
+   <h4 class="tagline" onclick="copyText(this)" >FFID: 1163437282 <svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <rect x="8" y="8" width="12" height="12" rx="2"/>
+  <path d="M6 16H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+
+</svg>
+    </h4>
    
    
     <div class="links">
-        <a class="link" href="#" onclick="showModal('MyInkVerse',inkverseLinks);">
-            <span> MyInkVerse </span>
+        <a class="link" href="#" onclick="profile();">
+            <span> Profile </span>
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
      width="24"
      height="24"
@@ -206,13 +227,21 @@ body{
      stroke-width="2"
      stroke-linecap="round"
      stroke-linejoin="round">
-  <path d="M12 20h9"/>
-  <path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+
+  <rect x="2" y="4" width="20" height="16" rx="2"/>
+
+  <circle cx="9" cy="10" r="2"/>
+
+  <path d="M6.5 15c.8-1.5 1.8-2 2.5-2s1.7.5 2.5 2"/>
+
+  <path d="M14 9h4"/>
+  <path d="M14 13h4"/>
+
 </svg></span>
         </a>
 
-        <a class="link" href="#" onclick="showModal('Instagram',instaLinks);">
-            <span> Instagram </span>
+        <a class="link" href="#" onclick="loadout();">
+            <span> Load Out </span>
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
      width="24"
      height="24"
@@ -222,14 +251,17 @@ body{
      stroke-width="2"
      stroke-linecap="round"
      stroke-linejoin="round">
-  <rect x="2" y="2" width="20" height="20" rx="5"/>
-  <circle cx="12" cy="12" r="4"/>
-  <circle cx="17.5" cy="6.5" r="1"/>
+
+  <rect x="5" y="6" width="14" height="14" rx="2"/>
+  <path d="M9 6V4h6v2"/>
+  <path d="M9 12h6"/>
+  <path d="M12 9v6"/>
+
 </svg></span>
         </a>
 
-        <a class="link" href="https://imxstore.in">
-            <span> Store </span>
+        <a class="link" href="#" onclick="stats();">
+            <span> Stats </span>
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
      width="24"
      height="24"
@@ -239,32 +271,20 @@ body{
      stroke-width="2"
      stroke-linecap="round"
      stroke-linejoin="round">
-  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-  <path d="M3 6h18"/>
-  <path d="M16 10a4 4 0 0 1-8 0"/>
-</svg></span>
-        </a>
-        
-           <a class="link" href="#" onclick="showModal('Contact',emailLinks);">
-            <span> Contact </span>
-            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <rect x="3" y="5" width="18" height="14" rx="2"/>
-  <path d="M3 7l9 6 9-6"/>
+
+  <path d="M8 4h8v4a4 4 0 0 1-8 0z"/>
+  <path d="M12 12v4"/>
+  <path d="M8 20h8"/>
+  <path d="M16 6h3a2 2 0 0 1-2 3h-1"/>
+  <path d="M8 6H5a2 2 0 0 0 2 3h1"/>
+
 </svg></span>
         </a>
 
     </div>
 <!--footer -->
     <div class="footer">
-         <p>
+          <p>
                 <span>made with ink |</span>
                 <span style="font-size:1.2rem;" class="signature"> Sujata</span>
             </p>
@@ -278,7 +298,7 @@ body{
             ✕
         </button>
         <h2 id="modalTitle"></h2>
-        <div id="modalLinks" class="links"></div>
+        <div id="modalText" class="tagline"></div>
 
     </div>
 </div>
@@ -287,170 +307,12 @@ body{
 
 <script>
     const modal = document.getElementById("InkModal");
-    
-    
-    const icons = {
-    movie: `<svg xmlns="http://www.w3.org/2000/svg" width="24"  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"     stroke-linecap="round"  stroke-linejoin="round"><path d="M4 8h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/>  <path d="M4 8l3-4"/>  <path d="M9 8l3-4"/>  <path d="M14 8l3-4"/>  <path d="M19 8l1-2"/></svg>`,
-    
-    anime: `<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
+const modalTitle = document.getElementById("modalTitle");
+const modalText = document.getElementById("modalText");
 
-  <rect x="3" y="3" width="18" height="18" rx="2"/>
-  <path d="M12 3v18"/>
-  <path d="M3 12h9"/>
-</svg>`,
-
-    music: `<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-
-  <path d="M12 4v12"/>
-  <path d="M12 4l7-2v12"/>
-  <circle cx="10" cy="18" r="2"/>
-  <circle cx="17" cy="16" r="2"/>
-
-</svg>`, 
-
-game: `<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <path d="M6 12h12a4 4 0 0 1 4 4v1a3 3 0 0 1-5.12 2.12L14 16H10l-2.88 3.12A3 3 0 0 1 2 17v-1a4 4 0 0 1 4-4z"/>
-  <path d="M8 10v4"/>
-  <path d="M6 12h4"/>
-  <circle cx="16.5" cy="11.5" r="1"/>
-  <circle cx="19" cy="14" r="1"/>
-</svg>`, 
-
-story:`<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-
-  <rect x="2" y="5" width="20" height="14" rx="4"/>
-  <path d="M10 9l5 3-5 3z"/>
-
-</svg>`, 
-
-email:`<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <rect x="3" y="5" width="18" height="14" rx="2"/>
-  <path d="M3 7l9 6 9-6"/>
-</svg>`, 
-
-insta:`<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <rect x="2" y="2" width="20" height="20" rx="5"/>
-  <circle cx="12" cy="12" r="4"/>
-  <circle cx="17.5" cy="6.5" r="1"/>
-</svg>`
-};
-
-    
-const inkverseLinks = [
-    {
-        title: "Gamer's Arena",
-        href: "ff.html",
-        icon: icons.game
-    }, 
-    {
-        title: "Anime Kingdom",
-        href: "anime.html",
-        icon: icons.anime
-    },
-    {
-        title: "Cinema District",
-        href: "movies.html",
-        icon: icons.movie
-    },
-    {
-        title: "Sound Valley",
-        href: "sound.html",
-        icon: icons.music
-    }, 
-    {
-        title: "Youtube Station",
-        href: "/music",
-        icon: icons.story
-    }
-];
-
-const instaLinks = [
-    {
-        title: "Anime Reels : 7degreeslove",
-        href: "https://instagram.com/7degreeslove",
-        icon: icons.insta
-    },
-    {
-        title: "Lyra Reels : 7degreelove",
-        href: "https://instagram.com/7degreelove",
-        icon: icons.insta
-    },
-    {
-        title: "Queen Sujata",
-        href: "https://instagram.com/queensujata63",
-        icon: icons.insta
-    }
-];
-
-const emailLinks = [
-    {
-        title: "contact@myinkverse.in",
-        href: "mailto:contact@myinkverse.in",
-        icon: icons.email
-    },
-    {
-        title: "contact@imxstore.in",
-        href: "mailto:contact@imxstore.in",
-        icon: icons.email
-    }
-];
-
-function showModal(title, items) {
+function showModal(title, content) {
     modalTitle.textContent = title;
-    modalLinks.innerHTML = items.map(item => `
-        <a class="link" href="${item.href}" target="_blank">
-            <span>${item.title}</span>
-            <span>${item.icon}</span>
-        </a>
-    `).join("");
+    modalText.innerHTML = content;
     modal.classList.add("show");
 }
 
@@ -458,10 +320,74 @@ function closeModal() {
     modal.classList.remove("show");
 }
 
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
-});
+function stat(label, value) {
+    return `
+        <div class="stat-row">
+            <span>${label}</span>
+            <span>${value}</span>
+        </div>
+    `;
+}
+
+function profile(){
+    showModal('Profile',
+    stat("Name", "Sujata") +
+    stat("Likes", "15000+")+
+    stat("Total BR Games", "15,063+") +
+    stat("Total CS Games", "5000+") +
+    stat("BR Herioc Count", "20+")+
+    stat("CS Heroic Count", "22+") +
+    stat("Long Range Weapon", "Scar/AK") +
+    stat("Short Range Weapon", "M1887") +
+    stat("Gameplay Style", "Survival")+
+    stat("Whishlist", "Skydive-Midnight Action")
+);
+}
+
+function loadout(){
+    showModal('Load Out',
+    stat("Character", " Kelly") +
+    stat("Pet", "Agumon") +
+    stat("Skills", "Ray, Moco, Maro, Lila") +
+    stat("Loby Weapon", "Scar")+
+    stat("Load-Out", "Enhanced Hammer") +
+    stat("Pet Skill", "Rockie") 
+);
+}
+
+function stats(){
+    showModal('Stats',
+    stat("CS Headshot Rate", "24%") +
+    stat("Total BR kills", "22000+") +
+    stat("Most kill In BR", "28") +
+    stat("K/D rate", "3.2")+
+    stat("Dynamic Duo", "No") +
+    stat("Game Time", "Mostly Night") 
+);
+}
+
+function copyText(btn){
+
+    const text = "1163437282";
+    navigator.clipboard.writeText(text);
+    btn.innerHTML = "FFID: 1163437282 ✓";
+    setTimeout(()=>{
+        btn.innerHTML = `FFID: 1163437282 <svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <rect x="8" y="8" width="12" height="12" rx="2"/>
+  <path d="M6 16H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+
+</svg>`;
+    },1500);
+
+}
 </script>
 </html>
