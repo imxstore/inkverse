@@ -8,7 +8,7 @@ const pages = {
     links: pageLinks.homeLinks
   }, 
   anime: {
-    image: "anime.jpg",
+    image: "photo.jpg",
     title: "𝙼𝚢𝙸𝚗𝚔𝚅𝚎𝚛𝚜𝚎",
     tagline: "Anime Kingdom",
     content:"", 
