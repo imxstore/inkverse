@@ -1,12 +1,12 @@
 const scripts = [
-  "anime.js",
-  "icons.js", 
-  "stats.js",
-  "list.js",
-  "songs.js",
-  "pages.js", 
-  "const.js",
-  "app.js"
+  "js/anime.js",
+  "js/icons.js", 
+  "js/stats.js",
+  "js/list.js",
+  "js/songs.js",
+  "js/pages.js", 
+  "js/const.js",
+  "js/app.js"
 ];
 (async () => {
   for (const src of scripts) {
