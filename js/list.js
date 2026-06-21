@@ -44,8 +44,8 @@ const PopLinks ={
 {
    title: "Queen Octapad",
    icon: icons.folder,
-   type: "page",
-   target: "test2"
+   type: "url",
+   target: "https://queen-sujata.github.io/queen-octapad/"
 }
 ], 
 
