@@ -95,7 +95,7 @@ const pageLinks = {
    target: `showModal('MyInkVerse', PopLinks.inkverseLinks);`
 },
 {
-   title: "My Projects",
+   title: "Apps",
    icon: icons.project,
    type: "action",
    target:`showModal('Projects', PopLinks.projectLinks);`
