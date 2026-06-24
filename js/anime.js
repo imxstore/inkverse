@@ -52,3 +52,36 @@ async function loadAnime() {
 }
 
 loadAnime()
+/*----------- anime links ------------*/
+function showTrending(){
+    showList(
+        "🔥 Trending Anime",
+        trendingAnime.map((anime, i) => ({
+            name: `${i + 1}. ${anime.title}`,
+            info: `⭐ ${anime.score || "N/A"}`
+        }))
+    );
+}
+
+function Watching(){
+    showModal(
+    "🔥 Currently Watching",
+    `
+    <div class="list-item tagline">
+        <span>Fairy Tale</span>
+        <span>Season 7</span>
+    </div>`
+) ;
+}
+
+function showUpcoming(){
+    showList(
+        "📅 Upcoming Anime",
+        upcomingAnime.map(anime => ({
+            name: anime.title,
+            info: anime.year || "TBA"
+        }))
+    );
+}
+/*----------closed anime links--------------*/
+
