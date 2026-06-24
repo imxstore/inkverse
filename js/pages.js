@@ -24,14 +24,14 @@ const pages = {
     links: pageLinks.gameLinks
   }, 
   music: {
-    image: "sp.jpg",
+    image: "photo.jpg",
     title: "𝙼𝚢𝙸𝚗𝚔𝚅𝚎𝚛𝚜𝚎",
     tagline: "Sound Vally",
     content:Songs.trendingSongs, 
     links:pageLinks.musicLinks
   }, 
   cinema: {
-    image: "sp.jpg",
+    image: "photo.jpg",
     title: "𝙼𝚢𝙸𝚗𝚔𝚅𝚎𝚛𝚜𝚎",
     tagline: "Cinema District",
     content:"", 
