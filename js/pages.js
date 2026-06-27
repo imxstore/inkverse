@@ -17,7 +17,7 @@ const pages = {
     links: pageLinks.gameLinks
   }, 
   music: {
-    image: "photo.jpg",
+    image: "sp.jpg",
     title: "𝙼𝚢𝙸𝚗𝚔𝚅𝚎𝚛𝚜𝚎",
     tagline: "Sound Vally",
     content:Songs.trendingSongs, 
