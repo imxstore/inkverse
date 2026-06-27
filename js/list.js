@@ -113,38 +113,6 @@ const pageLinks = {
    target:`showModal('Contacts',PopLinks.contactLinks);`
 }
 ], 
-animeLinks:[
-{
-   title: "Trending Anime",
-   icon: icons.trending,
-   type: "action",
-   target: "showTrending"
-},
-{
-   title: "Hidden Gems",
-   icon: icons.favorite,
-   type: "action",
-  target:`showList('Hidden Gems',hiddenGems)`
-},
-{
-   title: "Currently Watching",
-   icon: icons.watching,
-   type: "action",
-   target: "Watching"
-},
-{
-   title: "Upcoming Anime",
-   icon: icons.upcoming,
-   type: "action",
-   target: "showUpcoming"
-},
-{
-   title: "Buy Anime Dress",
-   icon: icons.store,
-   type: "url",
-   target: "https://imxstore.in"
-}
-], 
 cinemaLinks:[
 {
    title:"Trending Dramas",
