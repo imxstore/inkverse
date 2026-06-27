@@ -7,13 +7,6 @@ const pages = {
     content:"", 
     links: pageLinks.homeLinks
   }, 
-  anime: {
-    image: "photo.jpg",
-    title: "𝙼𝚢𝙸𝚗𝚔𝚅𝚎𝚛𝚜𝚎",
-    tagline: "Anime Kingdom",
-    content:"", 
-    links: pageLinks.animeLinks
-  }, 
   game: {
     image: "ff.jpg",
     title: "ᶜᴿᴬᶻᵞQUEEN✧",
