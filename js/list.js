@@ -51,12 +51,6 @@ const PopLinks ={
 
  inkverseLinks : [
 {
-   title: "Anime Kingdom",
-   icon: icons.anime,
-   type: "page",
-   target: "anime"
-},
-{
    title: "Gamer Arena",
    icon: icons.game,
    type: "page",
